@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginService } from 'src/app/services/login.service';
+import { Observable } from 'rxjs';
+import { AuthResponseData, LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login-page',
@@ -41,22 +42,24 @@ export class LoginPageComponent implements OnInit {
     const password = this.loginForm.value.password;
     this.isLoading = true;
 
+    let authObs: Observable<AuthResponseData>;
+
     if (this.loginMode) {
-      //
-      console.log('Sign in');
+      authObs = this.loginService.login(email, password);
     } else {
-      console.log(email + password);
-      this.loginService.sigup(email, password).subscribe({
-        next: (event) => {
-          console.log(event);
-          this.isLoading = false;
-        },
-        error: (errorRes) => {
-          this.error = errorRes.message;
-          this.isLoading = false;
-        },
-      });
+      authObs = this.loginService.sigup(email, password);
     }
+
+    authObs.subscribe({
+      next: (event) => {
+        console.log(event);
+        this.isLoading = false;
+      },
+      error: (errorRes) => {
+        this.error = errorRes.message;
+        this.isLoading = false;
+      },
+    });
 
     this.loginForm.reset();
   }
