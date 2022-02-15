@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { GamesComponent } from './components/games/games.component';
-import { LibraryComponent } from './components/library/library.component';
 import { FriendsComponent } from './components/friends/friends.component';
 import { LibraryGamesComponent } from './components/library-games/library-games.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -17,16 +16,12 @@ import { ProfileComponent } from './components/profile/profile.component';
     HeaderComponent,
     LoginPageComponent,
     GamesComponent,
-    LibraryComponent,
     FriendsComponent,
     LibraryGamesComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
