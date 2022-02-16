@@ -17,7 +17,7 @@
     <button type="submit" [disabled]="!loginForm.valid" (click)="onSignInMode()">Sign In</button>
     <button type="submit" [disabled]="!loginForm.valid" (click)="onSignUpMode()">Sign Up</button>
 
-    <span *ngIf="!loginForm.valid && loginForm.touched && !loginForm.errors?.['pattern']">Please provide a valid email address and password</span>
+
   </form>
 
 </div>

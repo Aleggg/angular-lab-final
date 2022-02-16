@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthResponseData, LoginService } from 'src/app/services/login.service';
 
@@ -24,7 +25,7 @@ export class LoginPageComponent implements OnInit {
     password: new FormControl('', Validators.required),
   });
 
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -52,8 +53,8 @@ export class LoginPageComponent implements OnInit {
 
     authObs.subscribe({
       next: (event) => {
-        console.log(event);
         this.isLoading = false;
+        this.router.navigate(['./games']);
       },
       error: (errorRes) => {
         this.error = errorRes.message;
