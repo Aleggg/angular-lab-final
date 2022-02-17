@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { HttpClientModule } from '@angular/common/http';
+=======
+import { RouterModule, Routes } from '@angular/router';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +16,15 @@ import { LibraryGamesComponent } from './components/library-games/library-games.
 import { ProfileComponent } from './components/profile/profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingSpinner } from './shared/loading-spinner/loading-spinner.component';
+
+
+const AppRoutes: Routes = [
+  {path: '', component: LoginPageComponent},
+  {path: 'games', component: GamesComponent},
+  {path: 'library', component: LibraryGamesComponent},
+  {path: 'friends', component: FriendsComponent},
+  {path: 'profile', component: ProfileComponent},
+];
 
 @NgModule({
   declarations: [
@@ -29,8 +42,11 @@ import { LoadingSpinner } from './shared/loading-spinner/loading-spinner.compone
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RouterModule.forRoot(AppRoutes)],
   ],
+
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}
