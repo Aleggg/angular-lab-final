@@ -1,0 +1,28 @@
+.navbar {
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    width: 1440px;
+    height: 56px;
+    padding: 8px 20px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    left: -1995px;
+    top: -4983px;
+}
+
+.menu-link {
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 23px;
+    text-align: left;    
+    color: #000000;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.menu-link:active {
+    color: #6C69FF;
+}
+  

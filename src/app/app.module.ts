@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,15 @@ import { FriendsComponent } from './components/friends/friends.component';
 import { LibraryGamesComponent } from './components/library-games/library-games.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
+
+const AppRoutes: Routes = [
+  {path: '', component: LoginPageComponent},
+  {path: 'games', component: GamesComponent},
+  {path: 'library', component: LibraryGamesComponent},
+  {path: 'friends', component: FriendsComponent},
+  {path: 'profile', component: ProfileComponent},
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,10 +28,14 @@ import { ProfileComponent } from './components/profile/profile.component';
     GamesComponent,
     FriendsComponent,
     LibraryGamesComponent,
-    ProfileComponent,
+    ProfileComponent
+
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, 
+    AppRoutingModule, 
+    RouterModule.forRoot(AppRoutes)],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}
