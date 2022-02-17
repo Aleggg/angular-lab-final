@@ -17,7 +17,7 @@ export interface AuthResponseData {
 })
 export class LoginService {
   user = new Subject<User>();
-
+  userEmail: string = '';
   constructor(private http: HttpClient) {}
 
   sigup(email: string, password: string) {
@@ -76,6 +76,7 @@ export class LoginService {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
     const user = new User(email, userId, token, expirationDate);
     this.user.next(user);
+    this.userEmail = email;
   }
 
   //Handling errors when user sign in or sign up

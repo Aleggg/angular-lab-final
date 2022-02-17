@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AuthResponseData, LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { AuthResponseData, LoginService } from 'src/app/services/login.service';
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css'],
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent implements OnInit, OnDestroy {
   loginMode = true;
   isLoading = false;
   error: string = '';
@@ -54,7 +54,7 @@ export class LoginPageComponent implements OnInit {
     authObs.subscribe({
       next: (event) => {
         this.isLoading = false;
-        this.router.navigate(['./games']);
+        this.router.navigate(['./profile']);
       },
       error: (errorRes) => {
         this.error = errorRes.message;
@@ -64,4 +64,6 @@ export class LoginPageComponent implements OnInit {
 
     this.loginForm.reset();
   }
+
+  ngOnDestroy(): void {}
 }
