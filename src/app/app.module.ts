@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { HttpClientModule } from '@angular/common/http';
-=======
+
 import { RouterModule, Routes } from '@angular/router';
 
 
@@ -16,10 +16,12 @@ import { LibraryGamesComponent } from './components/library-games/library-games.
 import { ProfileComponent } from './components/profile/profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingSpinner } from './shared/loading-spinner/loading-spinner.component';
+import { FriendItemComponent } from './components/friend-item/friend-item.component';
+
 
 
 const AppRoutes: Routes = [
-  {path: '', component: LoginPageComponent},
+  {path: '', pathMatch: 'full', redirectTo: 'friends'},
   {path: 'games', component: GamesComponent},
   {path: 'library', component: LibraryGamesComponent},
   {path: 'friends', component: FriendsComponent},
@@ -36,15 +38,15 @@ const AppRoutes: Routes = [
     LibraryGamesComponent,
     ProfileComponent,
     LoadingSpinner,
+    FriendItemComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(AppRoutes)],
+    RouterModule.forRoot(AppRoutes)
   ],
-
   providers: [],
   bootstrap: [AppComponent],
 })

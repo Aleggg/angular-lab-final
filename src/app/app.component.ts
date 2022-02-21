@@ -8,7 +8,7 @@ import { LoginService } from './services/login.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'angular-lab-final';
-  isLogged = false;
+  isLogged = true;
   userSub: any = null;
   constructor(private loginService: LoginService) {}
 
