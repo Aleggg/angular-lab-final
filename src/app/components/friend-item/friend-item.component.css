@@ -1,38 +1,27 @@
-.user-item {
-    width: 100%;
+.user {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 48px;
-    width: 1080px;
-    left: 60px;
-    top: 186px;
     padding: 8px;
     margin-top: 28px;
 }
 
-.btn-remove-friend {
-    width: 125px;
-    left: 947px;
+.user__btn--remove {
     background-color: #FF6F6F;
 }
 
-.btn-add-friend {
-    width: 100px;
-    left: 972px;
+.user__btn--add {
     background-color: #6C69FF;
 }
 
-.btn-add-friend, 
-.btn-remove-friend, 
-.user-item {
-    box-shadow: 0px 0px 4px 0px #00000040;
-    border-radius: 4px;
+.user__btn {
+    padding: 8px 16px;
+    color: white;
+    border: none;
 }
 
-.btn-add-friend, 
-.btn-remove-friend {
-    padding: 8px, 16px, 8px, 16px;
-    top: 8px;
-    height: 32px;
+.user__btn,
+.user {
+    box-shadow: 0px 0px 4px 0px #00000040;
+    border-radius: 4px;
 }

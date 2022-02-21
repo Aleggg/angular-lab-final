@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { User } from '../friends/user.interface';
 
 @Component({
   selector: 'app-friend-item',
@@ -9,7 +10,7 @@ export class FriendItemComponent implements OnInit {
   @Input() user: any;
   @Input() buttonText: string = '';
   @Input() buttonClass: boolean = true;
-  @Output() btnClick: EventEmitter<any> = new EventEmitter();
+  @Output() btnClick: EventEmitter<User> = new EventEmitter();
 
   constructor() { }
 

@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { User } from './user.interface';
 
 @Component({
   selector: 'app-friends',
@@ -9,29 +10,21 @@ export class FriendsComponent implements OnInit {
   @ViewChild('search') search: ElementRef | undefined;
   public textFragment: string = '';
   public visibleFriends = true; 
-  public filteredUsers: Array<{
-    name: string,
-    email: string,
-    id: number
-  }> = [];
-  public users: Array<{
-    name: string,
-    email: string,
-    id: number
-  }> = [
+  public filteredUsers: Array<User> = [];
+  public users: Array<User> = [
     {
       name: 'John Doe',
       email: 'john_doe@mail.com',
       id: 1
     },
     {
-      name: 'John Du',
-      email: 'john_du@mail.com',
+      name: 'John Taylor',
+      email: 'john_taylor@mail.com',
       id: 2
     },
     {
-      name: 'Alicija Kruch',
-      email: 'alicija_kruch@mai.com',
+      name: 'Lucy Kruch',
+      email: 'lucy_kruch@mai.com',
       id: 3
     },
     {
@@ -50,54 +43,50 @@ export class FriendsComponent implements OnInit {
       id: 6
     },
     {
-      name: 'John Doe1',
-      email: 'mail@com',
+      name: 'Rick Novak',
+      email: 'rick_novak@mail.com',
       id: 7
     },
     {
-      name: 'John Doe2',
-      email: 'mail@com',
+      name: 'Susan Connor',
+      email: 'susan_connor@mail.com',
       id: 8
     },
     {
-      name: 'John Doe4',
-      email: 'mail@com',
+      name: 'Ronald Barr',
+      email: 'ronald_barr@mail.com',
       id: 9
     },
     {
-      name: 'John Doe3',
-      email: 'mail@com',
+      name: 'Roger Lum',
+      email: 'roger_lum@mail.com',
       id: 10
     },
     {
-      name: 'John Doe5',
-      email: 'mail@com',
+      name: 'Jeff Johnson',
+      email: 'jeff_johnson@mail.com',
       id: 11
     },
     {
-      name: 'John Doe7',
-      email: 'mail@com',
+      name: 'Melvin Forbis',
+      email: 'melvin_forbis@mail.com',
       id: 12
     },
     {
-      name: 'John Doe8',
-      email: 'mail@com',
+      name: 'Alen Lee',
+      email: 'alen_lee@mail.com',
       id: 13
     },
   ];
-  public friends: Array<{
-    name: string,
-    email: string,
-    id: number
-  }> = [
+  public friends: Array<User> = [
     {
       name: 'John Doe',
       email: 'john_doe@mail.com',
       id: 1
     },
     {
-      name: 'John Du',
-      email: 'john_du@mail.com',
+      name: 'John Taylor',
+      email: 'john_taylor@mail.com',
       id: 2
     }
   ]

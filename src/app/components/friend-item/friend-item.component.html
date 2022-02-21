@@ -1,7 +1,8 @@
-<div class="user-item">
+<div class="user">
     <p>{{user.name}}</p>
     <button 
-        [ngClass]="{'btn-add-friend' : !buttonClass, 'btn-remove-friend': buttonClass}"
+        class="user__btn"
+        [ngClass]="{'user__btn--add' : !buttonClass, 'user__btn--remove': buttonClass}"
         (click)="toggleFriend()">{{buttonText}}
     </button>
 </div>
