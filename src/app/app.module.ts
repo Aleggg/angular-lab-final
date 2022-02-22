@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { HttpClientModule } from '@angular/common/http';
 
+
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +16,7 @@ import { LibraryGamesComponent } from './components/library-games/library-games.
 import { ProfileComponent } from './components/profile/profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingSpinner } from './shared/loading-spinner/loading-spinner.component';
+
 import { AuthGuardService } from './services/auth-guard.service';
 
 const AppRoutes: Routes = [
@@ -40,7 +42,9 @@ const AppRoutes: Routes = [
     component: FriendsComponent,
     canActivate: [AuthGuardService],
   },
-];
+
+import { FriendItemComponent } from './components/friend-item/friend-item.component';
+
 
 @NgModule({
   declarations: [
@@ -52,15 +56,17 @@ const AppRoutes: Routes = [
     LibraryGamesComponent,
     ProfileComponent,
     LoadingSpinner,
+    FriendItemComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(AppRoutes),
-  ],
 
+    RouterModule.forRoot(AppRoutes)
+
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

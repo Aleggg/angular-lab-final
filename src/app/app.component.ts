@@ -11,6 +11,7 @@ export class AppComponent implements OnInit, OnDestroy {
   title = 'angular-lab-final';
   isLogged = false;
   userSub: Subscription;
+
   constructor(private loginService: LoginService) {}
 
   ngOnInit(): void {
