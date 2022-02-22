@@ -38,10 +38,11 @@ export class ProfileComponent implements OnInit {
     const localUser = JSON.parse(sessionStorage.getItem('userData'));
     if (localUser) {
       this.profileService.getProfile().subscribe((respone) => {
-        this.profileForm.setValue({
-          ...respone,
-        });
-        console.log(respone);
+        if (respone) {
+          this.profileForm.setValue({
+            ...respone,
+          });
+        }
       });
     }
     this.profileForm.disable();
@@ -49,12 +50,12 @@ export class ProfileComponent implements OnInit {
 
   onSubmit() {
     this.profileService.saveProfile(this.profileForm.value).subscribe();
-    console.log(this.profileForm.value);
     this.editMode = false;
     this.profileForm.disable();
   }
   onEditMode() {
     this.editMode = true;
     this.profileForm.enable();
+    this.profileForm.controls['email'].disable();
   }
 }

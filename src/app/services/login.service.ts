@@ -10,6 +10,7 @@ import {
 } from 'rxjs';
 import { User } from '../shared/user.model';
 import { Router } from '@angular/router';
+import { ProfileService } from './profile.service';
 
 export interface AuthResponseData {
   idToken: string;
@@ -105,6 +106,7 @@ export class LoginService {
     this.user.next(null);
     sessionStorage.clear();
     this.router.navigate(['/']);
+
     if (this.tokenExpirationTimer) {
       clearTimeout(this.tokenExpirationTimer);
     }

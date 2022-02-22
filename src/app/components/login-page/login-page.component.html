@@ -18,6 +18,7 @@
     <button type="submit" [disabled]="!loginForm.valid" (click)="onSignUpMode()" *ngIf="signUpMode">Sign Up</button>
     <span *ngIf="!loginForm.valid && loginForm.touched">Please provide valid email and password</span>
     <button class="signUp" (click)="onSignUp()" *ngIf="!signUpMode"><a>Dont have an account?</a></button>
+    <button class="signUp" (click)="onSignUp()" *ngIf="signUpMode"><a>Already have an account?</a></button>
   </form>
 
 </div>

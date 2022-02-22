@@ -12,19 +12,33 @@ import { LoginService } from './login.service';
 })
 export class ProfileService {
   constructor(private http: HttpClient, private loginService: LoginService) {}
-  user = JSON.parse(sessionStorage.getItem('userData'));
+  //user = JSON.parse(sessionStorage.getItem('userData'));
   saveProfile(profileData: Object) {
     // Save profile data
     return this.http.put(
-      `https://angular-lab-final-default-rtdb.europe-west1.firebasedatabase.app/profileData${this.user.id}.json`,
+      `https://angular-lab-final-default-rtdb.europe-west1.firebasedatabase.app/profileData${
+        JSON.parse(sessionStorage.getItem('userData')).id
+      }.json`,
       profileData,
-      { params: new HttpParams().set('auth', this.user._token) }
+      {
+        params: new HttpParams().set(
+          'auth',
+          JSON.parse(sessionStorage.getItem('userData'))._token
+        ),
+      }
     );
   }
   getProfile() {
     return this.http.get(
-      `https://angular-lab-final-default-rtdb.europe-west1.firebasedatabase.app/profileData${this.user.id}.json`,
-      { params: new HttpParams().set('auth', this.user._token) }
+      `https://angular-lab-final-default-rtdb.europe-west1.firebasedatabase.app/profileData${
+        JSON.parse(sessionStorage.getItem('userData')).id
+      }.json`,
+      {
+        params: new HttpParams().set(
+          'auth',
+          JSON.parse(sessionStorage.getItem('userData'))._token
+        ),
+      }
     );
   }
 }

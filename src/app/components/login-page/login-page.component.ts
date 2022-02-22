@@ -40,7 +40,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     this.loginMode = true;
   }
   onSignUp() {
-    this.signUpMode = true;
+    this.signUpMode = !this.signUpMode;
   }
   onSubmit() {
     if (!this.loginForm.valid) {

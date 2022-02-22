@@ -32,7 +32,6 @@ export class AuthGuardService implements CanActivate {
         }
         return this.router.createUrlTree(['/login']); */
         if (state.url === '/login') {
-          console.log(state.url);
           if (isAuth) return this.router.createUrlTree(['/games']);
           return true;
         }
