@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { fromEvent, Observable, Subscription } from 'rxjs';
 import { LoginService } from './services/login.service';
 
 @Component({
@@ -8,16 +9,20 @@ import { LoginService } from './services/login.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'angular-lab-final';
-  isLogged = true;
-  userSub: any = null;
+  isLogged = false;
+  userSub: Subscription;
+
   constructor(private loginService: LoginService) {}
 
   ngOnInit(): void {
+    this.loginService.autoLogin();
     this.userSub = this.loginService.user.subscribe((user) => {
       this.isLogged = !user ? false : true;
     });
   }
+
   ngOnDestroy(): void {
     this.userSub.unsubscribe();
+    localStorage.clear();
   }
 }

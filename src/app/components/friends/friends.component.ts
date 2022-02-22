@@ -4,9 +4,14 @@ import { User } from './user.interface';
 @Component({
   selector: 'app-friends',
   templateUrl: './friends.component.html',
-  styleUrls: ['./friends.component.css']
+  styleUrls: ['./friends.component.css'],
 })
 export class FriendsComponent implements OnInit {
+
+  constructor() {}
+
+  ngOnInit(): void {}
+
   @ViewChild('search') search: ElementRef | undefined;
   public textFragment: string = '';
   public visibleFriends = true; 
@@ -113,4 +118,5 @@ export class FriendsComponent implements OnInit {
     const index = this.friends.findIndex(friend => friend.id === id);
     this.friends.splice(index, 1);
   }
+
 }

@@ -1,7 +1,2 @@
-<app-login-page *ngIf="!isLogged"></app-login-page>
-
-
-<ng-container *ngIf="isLogged">
-    <app-header></app-header>
-    <router-outlet></router-outlet>
-</ng-container>
+<app-header *ngIf="isLogged"></app-header>
+<router-outlet></router-outlet>

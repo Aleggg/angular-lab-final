@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { LoginService } from 'src/app/services/login.service';
 import { ProfileService } from 'src/app/services/profile.service';
 
@@ -26,16 +27,35 @@ export class ProfileComponent implements OnInit {
       ])
     ),
   });
+  editMode = false;
 
   constructor(
     private loginService: LoginService,
     private profileService: ProfileService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const localUser = JSON.parse(sessionStorage.getItem('userData'));
+    if (localUser) {
+      this.profileService.getProfile().subscribe((respone) => {
+        if (respone) {
+          this.profileForm.setValue({
+            ...respone,
+          });
+        }
+      });
+    }
+    this.profileForm.disable();
+  }
 
   onSubmit() {
     this.profileService.saveProfile(this.profileForm.value).subscribe();
-    console.log(this.profileForm.value);
+    this.editMode = false;
+    this.profileForm.disable();
+  }
+  onEditMode() {
+    this.editMode = true;
+    this.profileForm.enable();
+    this.profileForm.controls['email'].disable();
   }
 }

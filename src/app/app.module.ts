@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { HttpClientModule } from '@angular/common/http';
 
-import { RouterModule, Routes } from '@angular/router';
 
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,17 +16,35 @@ import { LibraryGamesComponent } from './components/library-games/library-games.
 import { ProfileComponent } from './components/profile/profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingSpinner } from './shared/loading-spinner/loading-spinner.component';
-import { FriendItemComponent } from './components/friend-item/friend-item.component';
 
-
+import { AuthGuardService } from './services/auth-guard.service';
 
 const AppRoutes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'friends'},
-  {path: 'games', component: GamesComponent},
-  {path: 'library', component: LibraryGamesComponent},
-  {path: 'friends', component: FriendsComponent},
-  {path: 'profile', component: ProfileComponent},
-];
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  {
+    path: 'login',
+    component: LoginPageComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuardService],
+  },
+  { path: 'games', component: GamesComponent, canActivate: [AuthGuardService] },
+  {
+    path: 'library',
+    component: LibraryGamesComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'friends',
+    component: FriendsComponent,
+    canActivate: [AuthGuardService],
+  },
+
+import { FriendItemComponent } from './components/friend-item/friend-item.component';
+
 
 @NgModule({
   declarations: [
@@ -45,10 +63,11 @@ const AppRoutes: Routes = [
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+
     RouterModule.forRoot(AppRoutes)
+
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}
