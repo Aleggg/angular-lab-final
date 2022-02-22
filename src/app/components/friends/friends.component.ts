@@ -96,10 +96,7 @@ export class FriendsComponent implements OnInit {
     }
   ]
 
-  constructor() { }
 
-  ngOnInit(): void {
-  }
 
   onSearch(): void {
     this.filteredUsers = this.users;
