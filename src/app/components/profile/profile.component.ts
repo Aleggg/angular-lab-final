@@ -56,6 +56,6 @@ export class ProfileComponent implements OnInit {
   onEditMode() {
     this.editMode = true;
     this.profileForm.enable();
-    this.profileForm.controls['email'].disable();
+    //this.profileForm.controls['email'].disable();
   }
 }
