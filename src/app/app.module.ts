@@ -16,7 +16,7 @@ import { LibraryGamesComponent } from './components/library-games/library-games.
 import { ProfileComponent } from './components/profile/profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingSpinner } from './shared/loading-spinner/loading-spinner.component';
-
+import { FriendItemComponent } from './components/friend-item/friend-item.component';
 import { AuthGuardService } from './services/auth-guard.service';
 
 const AppRoutes: Routes = [
@@ -42,8 +42,8 @@ const AppRoutes: Routes = [
     component: FriendsComponent,
     canActivate: [AuthGuardService],
   },
+]
 
-import { FriendItemComponent } from './components/friend-item/friend-item.component';
 
 
 @NgModule({
