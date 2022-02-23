@@ -48,7 +48,7 @@ export class GamesComponent implements OnInit {
         let randomIndex = Math.floor(Math.random() * this.games.length);
         let radomGameInLibrary = this.games[randomIndex];
         if(!this.service.myGames.includes(radomGameInLibrary)){
-          if(this.service.myGames.length === 0){
+          if(this.service.myGames.length < 3){
             this.service.myGames.push(radomGameInLibrary)
           }
         //this.service.myGames.push(radomGameInLibrary)
