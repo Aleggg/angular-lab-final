@@ -8,6 +8,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class HeaderComponent implements OnInit {
   myImage: string = 'assets/images/steam-seeklogo.com 1.png';
+  isVisible = false;
 
   constructor(private loginService: LoginService) {}
 
@@ -16,5 +17,9 @@ export class HeaderComponent implements OnInit {
   onLogout() {
     this.loginService.logout();
     console.log('works');
+  }
+
+  isVisibleMenu() {
+    this.isVisible = !this.isVisible
   }
 }

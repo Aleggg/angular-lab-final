@@ -40,4 +40,10 @@
     border-radius: 4px;
 }
 
+@media  (max-width: 767px) {
+    .friends {
+        margin: 12px 30px;
+    }
+}
+
 
