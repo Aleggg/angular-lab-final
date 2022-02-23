@@ -1,1 +1,57 @@
-<p>games works!</p>
+<div class="container">
+    <h2>Games</h2>
+    <div class="search-form">
+        <label class="search-games-label" for="search-games">Search Games</label>
+            <input class="search-games-input" id="search-games" placeholder="Search Games" [(ngModel)]="searchGame">
+            <button class="search-games-button">Search</button>
+    </div>
+    <h2>Featured Games</h2>
+    <div class="games-and-sidebar">
+        <div class="games-cards">
+        <div class="game-card" *ngFor='let game of games 
+        | gamesSearch:searchGame
+        | indieFilter:indieChecked
+        | actionFilter:actionChecked
+        | adventureFilter:adventureChecked
+        | priceFilter:maxPrice' >
+            <div class="card-header">
+                <h4>{{game.title}}</h4>
+                <div>  
+                    <p>{{game.price}} UAH</p> 
+                </div>
+            </div>
+            <div class="card-description">
+                <p>{{game.description}}</p>
+            </div>
+            <div class="add-to-library-button">
+                <button (click)="addToLibrary(game)"
+                [disabled]="game.isInLibrary" 
+                [ngStyle]="{backgroundColor: game.isInLibrary ? 'grey' : '6C69FF'}">Add to Library</button>
+            </div>
+        </div>
+     </div>
+        <div class="sidebar">
+            <h4>Filter by price</h4>
+            <div class="range">
+                <input type="range" min="99" max="999" step="1" id="price-range" [(ngModel)] = "maxPrice" > 
+                <label for="price-range">Any price</label>
+            </div>
+            
+            <h4>Filter by tag</h4>
+            <div class="checkbox">
+                <div class="checkbox-1">
+                    <input type="checkbox" id="indie" [(ngModel)] = "indieChecked" >
+                    <label for="indie">Indie</label>
+                </div>
+                <div class="checkbox-2">
+                    <input type="checkbox" id="action" [(ngModel)] = "actionChecked" >
+                    <label for="action">Action</label>
+                </div>
+                <div class="checkbox-3" >
+                    <input type="checkbox" id="adventure" [(ngModel)] = "adventureChecked" >
+                    <label for="adventure">Adventure</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
