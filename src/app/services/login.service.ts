@@ -27,6 +27,7 @@ export interface AuthResponseData {
 export class LoginService {
   user = new BehaviorSubject<User>(null);
   userEmail: string = '';
+  userData: User;
   private tokenExpirationTimer: any;
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -111,6 +112,7 @@ export class LoginService {
       clearTimeout(this.tokenExpirationTimer);
     }
     this.tokenExpirationTimer = null;
+    this.userData = null;
   }
 
   autoLogout(expirationDuration: number) {
@@ -135,6 +137,7 @@ export class LoginService {
     this.userEmail = email;
 
     sessionStorage.setItem('userData', JSON.stringify(user));
+    this.userData = user;
   }
 
   //Handling errors when user sign in or sign up

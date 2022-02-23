@@ -37,8 +37,10 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     const localUser = JSON.parse(sessionStorage.getItem('userData'));
     if (localUser) {
+      //console.log('yes');
       this.profileService.getProfile().subscribe((respone) => {
         if (respone) {
+          console.log(respone);
           this.profileForm.setValue({
             ...respone,
           });
@@ -46,6 +48,7 @@ export class ProfileComponent implements OnInit {
       });
     }
     this.profileForm.disable();
+    this.profileService.profUser.subscribe();
   }
 
   onSubmit() {
@@ -56,6 +59,6 @@ export class ProfileComponent implements OnInit {
   onEditMode() {
     this.editMode = true;
     this.profileForm.enable();
-    this.profileForm.controls['email'].disable();
+    //this.profileForm.controls['email'].disable();
   }
 }

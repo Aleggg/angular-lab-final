@@ -4,7 +4,14 @@ import {
   HttpParams,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, exhaustMap, take, throwError } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  exhaustMap,
+  take,
+  throwError,
+} from 'rxjs';
+import { User } from '../shared/user.model';
 import { LoginService } from './login.service';
 
 @Injectable({
@@ -12,20 +19,17 @@ import { LoginService } from './login.service';
 })
 export class ProfileService {
   constructor(private http: HttpClient, private loginService: LoginService) {}
-  //user = JSON.parse(sessionStorage.getItem('userData'));
+  user = JSON.parse(sessionStorage.getItem('userData'));
+  profUser = new BehaviorSubject<User>(this.user);
   saveProfile(profileData: Object) {
     // Save profile data
+    console.log(profileData);
     return this.http.put(
       `https://angular-lab-final-default-rtdb.europe-west1.firebasedatabase.app/profileData${
         JSON.parse(sessionStorage.getItem('userData')).id
       }.json`,
       profileData,
-      {
-        params: new HttpParams().set(
-          'auth',
-          JSON.parse(sessionStorage.getItem('userData'))._token
-        ),
-      }
+      { params: new HttpParams().set('auth', this.user._token) }
     );
   }
   getProfile() {
@@ -33,12 +37,7 @@ export class ProfileService {
       `https://angular-lab-final-default-rtdb.europe-west1.firebasedatabase.app/profileData${
         JSON.parse(sessionStorage.getItem('userData')).id
       }.json`,
-      {
-        params: new HttpParams().set(
-          'auth',
-          JSON.parse(sessionStorage.getItem('userData'))._token
-        ),
-      }
+      { params: new HttpParams().set('auth', this.user._token) }
     );
   }
 }
