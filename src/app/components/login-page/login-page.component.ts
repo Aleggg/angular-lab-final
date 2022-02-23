@@ -61,7 +61,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     authObs.subscribe({
       next: (event) => {
         this.isLoading = false;
-        this.router.navigate(['./profile']);
+        this.router.navigate(['./games']);
       },
       error: (errorRes) => {
         this.error = errorRes.message;
