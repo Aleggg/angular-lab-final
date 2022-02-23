@@ -1,0 +1,22 @@
+<div class="navbar">
+  <a routerLink="games"><img [src]="myImage" class="logo" alt="logo"></a>
+  <nav class="menu">
+    <a routerLink="" class="menu-link" routerLinkActive="active">Games</a>
+    <a routerLink="library" class="menu-link">Library</a>
+    <a routerLink="friends" class="menu-link">Friends</a>
+    <a routerLink="profile" class="menu-link">Profile</a>
+  </nav>
+
+  <div class="burger-menu">
+    <button class="menu-btn" (click)="isVisibleMenu()">
+      <img src="../../../assets/images/outline_menu_black_24dp.png" alt="">
+    </button>
+    <nav class="menu-2" *ngIf="isVisible">
+      <a routerLink="" class="menu-link" routerLinkActive="active">Games</a>
+      <a routerLink="library" class="menu-link">Library</a>
+      <a routerLink="friends" class="menu-link">Friends</a>
+      <a routerLink="profile" class="menu-link">Profile</a>
+    </nav>
+  </div>
+  <button class="logout-btn" (click)="onLogout()">Logout</button>
+</div>
